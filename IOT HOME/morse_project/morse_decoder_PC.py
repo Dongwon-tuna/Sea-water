@@ -23,34 +23,32 @@ morse_code = { '':' ','.-':'A', '-....':'B',
 
     }
 
-b = []
-c = []
-
 
 while True:
-    connectionSock, addr = serverSock.accept()
-    data = connectionSock.recv(1024)
-    puttheword = data.decode('utf-8')
-    print(puttheword) 
-    connectionSock.send('connecting'.encode('utf-8'))
+    b = []
+    d = []
 
-    split_code = data.decode('utf-8').split(" ")
-    b =split_code
 
-    
+
+    while True:
+        connectionSock, addr = serverSock.accept()
+        data = connectionSock.recv(1024)
+        puttheword = data.decode('utf-8')
+        print(puttheword) 
+        connectionSock.send('connecting'.encode('utf-8'))
+
+        split_code = data.decode('utf-8').split(" ")
+        b =split_code
+
+        break
 
     for i in b:
-    
-        c.append(morse_code.get(i))
+        d.append(morse_code.get(i))
 
-    #res = ''.join(c)
-
-    
-
-   
-    print(c)
+    res = ''.join(d)
+    print(res)
     b.clear()
-    c.clear()
+    d.clear()
     
    
         
